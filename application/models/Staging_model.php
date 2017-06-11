@@ -39,14 +39,12 @@ class Staging_model extends CI_Model {
     public function update_target() {
         $source = $this->load->database('mysql_ttr_mse', TRUE);
         $target = $this->load->database('mssql_trhv5', TRUE);
-        $query = $source->get('ed_diag_last_staging', 100);
+        $query = $source->get('staging_last');
         $target->truncate('LSTSTGV5PF');
         foreach ($query->result() as $row) {
-            //echo $row->id;
-            $data = array(
-                'LSGID' => $row->id,
-                'LSGHN' => $row->hn
-            );
+            $data = ['LSGRQODTE' =>  $row->request_thdate , 'LSGHN' => $row->hn, 'LSGENDID' => $row->endocrine_id, 'LSGENDNAM' => $row->endocrine_name,
+                'LSGSTGID' => $row->staging_id, 'LSGSTGNAM' => $row->staging_name, 'LSGTHYID' => $row->thyroid_id, 'LSGTHYNAM' => $row->thyroid_type_name,
+                'LSGDRCOD' => $row->doctor_id,'LSGPREFIX' => iconv('UTF-8','tis-620',$row->prefix),'LSGDRNAM' =>  iconv('UTF-8','tis-620',$row->doctor_name),'LSGID' => $row->id];
             $target->query('SET IDENTITY_INSERT LSTSTGV5PF ON');
             $target->insert('LSTSTGV5PF', $data);
         }
