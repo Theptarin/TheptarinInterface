@@ -25,19 +25,19 @@ class Staging_model extends CI_Model {
      * 
      */
     public function get_source() {
-        $db = $this->load->database('mysql_ttr_mse', TRUE);
-        $query = $db->get('ed_diag_last_staging', 5);
+        $db = $this->load->database('mysql_ttr_hims', TRUE);
+        $query = $db->get('staging_last', 5);
         return $query->result();
     }
 
     public function get_target() {
         $db = $this->load->database('mssql_trhv5', TRUE);
-        $query = $db->get('LSTSTGV5PF', 5);
+        $query = $db->get('LSTSTGV5PF',5);
         return $query->result();
     }
 
     public function update_target() {
-        $source = $this->load->database('mysql_ttr_mse', TRUE);
+        $source = $this->load->database('mysql_ttr_hims', TRUE);
         $target = $this->load->database('mssql_trhv5', TRUE);
         $query = $source->get('staging_last');
         $target->truncate('LSTSTGV5PF');

@@ -95,7 +95,7 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-$db['mysql_ttr_mse'] = array(
+$db['mysql_ttr_hims'] = array(
 	'dsn'	=> '',
 	'hostname' => '10.1.99.6',
 	'username' => 'orr-projects',
@@ -120,6 +120,28 @@ $db['mysql_ttr_mse'] = array(
 $db['mssql_trhv5'] = array(
 	'dsn'	=> '',
 	'hostname' => 'dblib:host=10.1.99.12;dbname=TRHV5',
+	'username' => 'mse',
+	'password' => 'm0116',
+	'database' => '',
+	'dbdriver' => 'pdo',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => '',
+	'dbcollat' => '',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
+$db['odbc_trhv5'] = array(
+	'dsn'	=> 'odbc:Driver={ODBC Driver 13 for SQL Server};SERVER=10.1.99.12;DATABASE=TRHV5;',
+	'hostname' => '',
 	'username' => 'mse',
 	'password' => 'm0116',
 	'database' => '',
